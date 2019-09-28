@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView android:layout_height="match_parent" android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,36 +10,133 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/btnChooseImage"
+        android:id="@+id/btnChooseImage1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Choose"
         android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgPhoto" />
+        android:text="Choose"
+        app:layout_constraintEnd_toEndOf="@+id/imgPhoto1"
+        app:layout_constraintStart_toStartOf="@+id/imgPhoto1"
+        app:layout_constraintTop_toBottomOf="@+id/imgPhoto1" />
+
+    <Button
+        android:id="@+id/btnChooseImage2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Choose"
+        app:layout_constraintEnd_toEndOf="@+id/imgPhoto2"
+        app:layout_constraintStart_toStartOf="@+id/imgPhoto2"
+        app:layout_constraintTop_toBottomOf="@+id/imgPhoto2" />
+
+    <Button
+        android:id="@+id/btnChooseImage3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Choose"
+
+        app:layout_constraintEnd_toEndOf="@+id/imgPhoto3"
+        app:layout_constraintStart_toStartOf="@+id/imgPhoto3"
+        app:layout_constraintTop_toBottomOf="@+id/imgPhoto3" />
+
+    <Button
+        android:id="@+id/btnChooseImage4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Choose"
+
+        app:layout_constraintEnd_toEndOf="@+id/imgPhoto4"
+        app:layout_constraintStart_toStartOf="@+id/imgPhoto4"
+        app:layout_constraintTop_toBottomOf="@+id/imgPhoto4" />
+
+    <Button
+        android:id="@+id/btnChooseImage5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Choose"
+        app:layout_constraintEnd_toEndOf="@+id/imgPhoto5"
+        app:layout_constraintStart_toStartOf="@+id/imgPhoto5"
+        app:layout_constraintTop_toBottomOf="@+id/imgPhoto5" />
 
     <Button
         android:id="@+id/btnUpload"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Upload"
-        android:layout_marginTop="16dp"
 
-        app:layout_constraintEnd_toEndOf="@+id/btnChooseImage"
-        app:layout_constraintStart_toStartOf="@+id/btnChooseImage"
-        app:layout_constraintTop_toBottomOf="@+id/btnChooseImage" />
+        android:layout_marginTop="11dp"
+        android:text="Upload"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgPhoto5" />
 
     <ImageView
-        android:id="@+id/imgPhoto"
-        android:layout_marginTop="16dp"
+        android:id="@+id/imgPhoto1"
 
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:scaleType="centerCrop"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/photoframe"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:scaleType="centerCrop"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars[0]" />
+
+    <ImageView
+        android:id="@+id/imgPhoto2"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/photoframe"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imgPhoto1"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars[0]" />
+
+    <ImageView
+        android:id="@+id/imgPhoto3"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/photoframe"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnChooseImage1"
+        tools:srcCompat="@tools:sample/avatars[0]" />
+
+    <ImageView
+        android:id="@+id/imgPhoto4"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/photoframe"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imgPhoto3"
+        app:layout_constraintTop_toBottomOf="@+id/btnChooseImage2"
+        tools:srcCompat="@tools:sample/avatars[0]" />
+
+    <ImageView
+        android:id="@+id/imgPhoto5"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/photoframe"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnChooseImage3"
+        tools:srcCompat="@tools:sample/avatars[0]" />
 </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

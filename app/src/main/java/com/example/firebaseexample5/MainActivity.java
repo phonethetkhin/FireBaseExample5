@@ -31,10 +31,10 @@ import java.io.IOException;
 import java.util.UUID;
 
 public class MainActivity extends AppCompatActivity {
-private Button btnChooseImage,btnUpload;
-private ImageView imgPhoto;
+private Button btnChooseImage1,btnChooseImage2,btnChooseImage3,btnChooseImage4,btnChooseImage5,btnUpload;
+private ImageView imgPhoto1,imgPhoto2,imgPhoto3,imgPhoto4,imgPhoto5;
 private Uri FilePath;
-private final int PICK_IMAGE_REQUEST=1;
+private int requestcode=0;
 FirebaseDatabase database;
 DatabaseReference databaseReference;
 FirebaseStorage storage;
@@ -44,38 +44,70 @@ StorageReference reference;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        btnChooseImage=findViewById(R.id.btnChooseImage);
+        btnChooseImage1=findViewById(R.id.btnChooseImage1);
+        btnChooseImage2=findViewById(R.id.btnChooseImage2);
+        btnChooseImage3=findViewById(R.id.btnChooseImage3);
+        btnChooseImage4=findViewById(R.id.btnChooseImage4);
+        btnChooseImage5=findViewById(R.id.btnChooseImage5);
         btnUpload=findViewById(R.id.btnUpload);
-        imgPhoto=findViewById(R.id.imgPhoto);
+        imgPhoto1=findViewById(R.id.imgPhoto1);
+        imgPhoto2=findViewById(R.id.imgPhoto2);
+        imgPhoto3=findViewById(R.id.imgPhoto3);
+        imgPhoto4=findViewById(R.id.imgPhoto4);
+        imgPhoto5=findViewById(R.id.imgPhoto5);
         storage=FirebaseStorage.getInstance();
         reference=storage.getReference();
 
-        btnChooseImage.setOnClickListener(new View.OnClickListener() {
+        btnChooseImage1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-            ChooseImage();
+            ChooseImage(1);
+            }
+        });
+        btnChooseImage2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ChooseImage(2);
+            }
+        });
+        btnChooseImage3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ChooseImage(3);
+            }
+        });
+        btnChooseImage4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ChooseImage(4);
+            }
+        });
+        btnChooseImage5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ChooseImage(5);
             }
         });
         btnUpload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                UploadImage();
+              //  UploadImage();
             }
         });
 
     }
-    private void ChooseImage()
+    private void ChooseImage(int requestcode)
     {
         Intent i=new Intent();
         i.setType("image/*");
         i.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(i,"Select Picture"),PICK_IMAGE_REQUEST);
+        startActivityForResult(Intent.createChooser(i,"Select Picture"),requestcode);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode==PICK_IMAGE_REQUEST && resultCode== RESULT_OK && data!=null && data.getData()!=null)
+        if(resultCode== RESULT_OK && data!=null && data.getData()!=null)
         {
             FilePath=data.getData();
             Bitmap bitmap= null;
@@ -84,10 +116,28 @@ StorageReference reference;
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            imgPhoto.setImageBitmap(bitmap);
+            switch (requestCode) {
+                case 1:
+                    imgPhoto1.setImageBitmap(bitmap);
+                    break;
+                case 2:
+                    imgPhoto2.setImageBitmap(bitmap);
+                    break;
+                case 3:
+                    imgPhoto3.setImageBitmap(bitmap);
+                    break;
+                case 4:
+                    imgPhoto4.setImageBitmap(bitmap);
+                    break;
+
+                case 5:
+                    imgPhoto5.setImageBitmap(bitmap);
+                    break;
+
+            }
         }
     }
-    private void UploadImage()
+   /* private void UploadImage()
     {
 if(FilePath!=null)
 {
@@ -106,20 +156,31 @@ if(FilePath!=null)
                             //We are sure here download task is completed
                             if(task.isSuccessful()){
                                 Uri imageUrl = task.getResult();
+                                for(int i=0;i<=5;i++) {
+                                    String[] imagearray = imageUrl.toString();
+                                }
                                 database=FirebaseDatabase.getInstance();
                                 databaseReference=database.getReference("PhotoModel");
                                 String ModelID=databaseReference.push().getKey();
-                                ClothModel cmodel=new ClothModel(001,2000,"Ladies Wear","Large",imageUrl.toString(),"Red");
+                                ClothModel cmodel=new ClothModel(001,2000,"Ladies Wear","Large","Red",imageUrl.toString());
                                 databaseReference.child(ModelID).setValue(cmodel).addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
-                                        Toast.makeText(MainActivity.this, "Both task completed", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(MainActivity.this, "Upload completed", Toast.LENGTH_SHORT).show();
+
                                     }
+
                                 });
+
                             }
+                            imgPhoto1.setImageResource(android.R.color.transparent);
+
+                            Toast.makeText(MainActivity.this, "Choose Another Photo", Toast.LENGTH_LONG).show();
                             dialog.dismiss();
+
                         }
                     });
+
 
                 }
             })
@@ -140,6 +201,8 @@ if(FilePath!=null)
 }
 
 
+
     }
+*/
 
 }
