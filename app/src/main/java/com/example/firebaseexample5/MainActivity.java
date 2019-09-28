@@ -94,6 +94,7 @@ StorageReference reference;
               //  UploadImage();
             }
         });
+        //aasdfsadfsdf
 
     }
     private void ChooseImage(int requestcode)
